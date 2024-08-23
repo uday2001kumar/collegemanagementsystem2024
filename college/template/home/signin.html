@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <title>Sign Un</title>
+   <script>
+    function check(event){
+        let a=document.getElementById('p').value
+        let b=document.getElementById('cp').value
+        if (a!=b){
+            alert("password and conformpassword not matching");
+            event.preventDefault();
+        }
+        else{
+            document.getElementById('msg').innerHTML='<h4>Signup Successful!</h4>';
+        }
+    }
+   
+   </script>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="p" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="cp" name="cpassword" required>
+                <span id="error" class="error"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sign In" onclick="check(event)">
+            </div>
+           </form>
+        <div id="msg"></div>
+        <a href="{% url 'loginview' %}">If You have already Accout Login here</a>
+    </div>
+</body>
+</html>

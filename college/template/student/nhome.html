@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/student/shome.css' %}"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'shome' %}">Home</a></li>
+            <li><a href="{% url 'lb' %}">Library</a></li>
+            <li><a href="{% url 'timet' %}">Time Table</a></li>
+            <li><a href="{% url 'er' %}">Exam Result</a></li>
+            <li><a href="{% url 'home' %}">Logout</a></li>
+        </ul>
+    </nav>
+{% block content %}
+
+{% endblock %}    
+    <footer>
+        <p>&copy; 2024 Your Project Name</p>
+    </footer>
+</body>
+</html>

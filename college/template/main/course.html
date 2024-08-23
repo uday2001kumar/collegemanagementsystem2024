@@ -1,0 +1,56 @@
+{% extends 'main/nav.html' %}
+{% load static %}
+{% block title %}
+Course
+{% endblock %}
+{% block content %}
+    <style>
+       .course-container{
+        display:flex ;
+        flex-wrap: wrap;
+       }
+       .course-card{
+        width: 350px;
+        height: 300px;
+        text-align: center;
+        background-color:rgb(32, 206, 145);
+        padding: 50px 25px 50px 50px;
+        margin: 78px;
+        border-radius: 7px;
+        
+       }
+       .course-info{
+        padding-bottom: 15px;
+       }
+       table {
+           border-collapse: collapse;
+           width: 100%;
+       }
+       td, th {
+           border: 0px solid;
+           
+       }
+       th {
+           text-align: left;
+       }
+    </style>
+
+    <h1>Avialable Courses</h1>
+    <div class="course-container">
+    {% for i in c1 %}
+        <div class="course-card">
+            <h2>{{i.c_title}}</h2>
+            <div class="course-info">
+                <table>
+                    <tr>    <td>Course Name</td>   <td>{{i.c_name}}</td>   </tr>
+                    <tr>    <td>Branch</td>   <td>{{i.c_branch}}</td>   </tr>
+                    <tr>    <td>Course ID</td>   <td>{{i.c_id}}</td>   </tr>
+                    <tr>    <td>Duration</td>   <td>{{i.c_duration}}</td>   </tr>
+                    <tr>    <td>Fee</td>   <td>{{i.c_fee}}</td>   </tr>
+                    <tr>    <td>Hostal</td>   <td>{{i.c_hostal}}</td>   </tr>
+                </table>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
