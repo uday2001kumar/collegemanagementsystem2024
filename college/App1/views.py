@@ -16,13 +16,20 @@ class Signin(View):
         email=r.POST.get('email')
         username=r.POST.get('username')
         pas=r.POST.get('password')
-        cpas=r.POST.get('cpassword')
+        cpas=r.POST.get('confirm-password')
         s1=SigninModel.objects.filter(email=email)
+        s1_msg="Email Id Already Exits!"
+        s2=SigninModel.objects.filter(username=username)
+        s2_msg="Username Already Exits!"
         if s1.exists():
-            return render(r,'home/login.html',{'s1':s1})
+            return render(r,'home/signin.html',{'s1':s1_msg})
+        elif s2.exists():
+            return render(r,'home/signin.html',{'s2':s2_msg})
         else:
-            SigninModel.objects.create(email=email,username=username,pas=pas,cpas=cpas)
-            return render(r,template_name='home/signin.html')
+            s3=SigninModel(email=email,username=username,pas=pas,cpas=cpas)
+            s3.save()
+            s3_msg="Signup Successful!"
+            return render(r,'home/login.html',{'s3':s3_msg})
 class LoginView(View):
     def get(self,r):
         return render(r,template_name='home/login.html')

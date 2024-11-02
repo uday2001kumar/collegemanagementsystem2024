@@ -10,8 +10,9 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
+        <p style="text-align: center;">If you Do not have Account<br><a href="{% url 'signinview' %}" style="text-decoration: none;">Click here to Signup</a></p>
         {% if error %}
-        <p >{{ error }}</p>
+        <p style="text-align: center;color: red;font-weight: bold;">{{ error }}</p>
         {% endif %}
         {% if success %}
         <p id="ps">{{ success }}</p>
