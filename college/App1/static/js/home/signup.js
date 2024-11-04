@@ -1,4 +1,5 @@
-function sub(){
+function sub(event){
+    event.preventDefault();
     let user=document.getElementById("username").value;
     let email=document.getElementById("email").value;
     let pas=document.getElementById("password").value;
@@ -36,6 +37,12 @@ function sub(){
                     setTimeout(function () {
                         location.reload(); 
                     }, 3000);
+                }
+                else {
+                    setTimeout(function () {
+                        location.reload(); 
+                    }, 3000);
+                    document.getElementById("Myform").submit();
                 }
             }
         }

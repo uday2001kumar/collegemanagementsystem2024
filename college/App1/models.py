@@ -20,13 +20,23 @@ class Course(models.Model):
     def __str__(self):
         return self.c_name
 
+
+'''______________________________________________________________________________________________________________________'''
+'''______________________________________________________________________________________________________________________'''
+#Student Application
+
+
 class StudentLogin(models.Model):
     s_roll = models.IntegerField(primary_key=True)
     s_dob = models.DateField()
-    s_name = models.CharField(max_length=100)
-    s_course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    s_branch = models.CharField(max_length=50)  # Assuming branch is directly entered; you might want to derive it from Course
-    s_year = models.CharField(max_length=10)
-    s_address = models.TextField()
     def __str__(self):
-        return self.s_name
+        return self.s_roll
+class StudentInformation(StudentLogin):
+    first_name=models.CharField(max_length=50)
+    last_name=models.CharField(max_length=50)
+    age=models.IntegerField()
+    # photo=models.ImageField()
+    course=models.ForeignKey(Course,on_delete=models.CASCADE)
+    state=models.CharField(max_length=100)
+    city=models.CharField(max_length=100)
+    address=models.CharField(max_length=200)

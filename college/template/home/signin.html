@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1 >Signup</h1>
-        <form action="{% url 'signin' %}" method="post" id="form1">
+        <form action="{% url 'signin' %}" method="post" onsubmit="sub(event)" id="Myform">
             {% csrf_token %}
         <h2 id="msg1" style="font-size: 18px; color: red;text-align: center;">{{s1}}</h2>
         <h2 id="msg2" style="font-size: 18px; color: red;text-align: center;">{{s2}}</h2>

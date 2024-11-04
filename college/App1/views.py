@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from .models import SigninModel,Course,StudentLogin
+from .models import SigninModel,Course
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -74,7 +74,14 @@ class Faculty(View):
 class About(View):
     def get(self,r):
         return render(r,template_name='main/about.html')
-#student App
+'''______________________________________________________________________________________________________________________'''
+'''______________________________________________________________________________________________________________________'''
+'''______________________________________________________________________________________________________________________'''
+'''______________________________________________________________________________________________________________________'''
+'''______________________________________________________________________________________________________________________'''
+
+#Student Application
+from .models import StudentLogin
 class StudentLoginView(View):
     def get(self,r):
         return render(r,template_name='student/login.html')
@@ -82,11 +89,17 @@ class StudentLoginV2(View):
     def post(self,r):
         roll=r.POST.get("roll_number")
         dob=r.POST.get("dob")
-        s4=StudentLogin(s_roll=roll,s_dob=dob)
-        if s4:
-            return render(r,template_name='student/shome.html')
+        lg1=StudentLogin.objects.filter(s_roll=roll)
+        lg2=StudentLogin.objects.filter(s_dob=dob)
+        if not lg1.exists():
+            msg1="Enter Valid Roll Number"
+            return render(r,'student/login.html',{'msg1':msg1})
+        elif not lg2.exists():
+            msg2="Enter Valid Date of Birth"
+            return render(r,'student/login.html',{'msg2':msg2})
         else:
-            return HttpResponse("Please Enter Valid Detials")
+            return render(r,'student/nhome.html')
+
 class Shome(View):
     def get(self,r):
         return render(r,template_name='student/shome.html')

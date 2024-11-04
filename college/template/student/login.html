@@ -10,6 +10,8 @@
 <body>
     <div class="container">
         <h2>Student Login</h2>
+        <h2 id="msg1" style="font-size: 18px; color: red;text-align: center;">{{msg1}}</h2>
+        <h2 id="msg2" style="font-size: 18px; color: red;text-align: center;">{{msg2}}</h2>
         <form method="post" action="{% url 'slv2' %}">
             {% csrf_token %}
             <div class="form-group">

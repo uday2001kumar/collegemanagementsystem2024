@@ -13,25 +13,21 @@ Course
         width: 350px;
         height: 300px;
         text-align: center;
-        background-color:rgb(32, 206, 145);
-        padding: 50px 25px 50px 50px;
-        margin: 78px;
+        background-color:rgb(142, 197, 14);
+        padding: 25px 25px 50px 50px;
+        margin: 20px 30px 10px 30px;
         border-radius: 7px;
         
-       }
-       .course-info{
-        padding-bottom: 15px;
        }
        table {
            border-collapse: collapse;
            width: 100%;
        }
        td, th {
-           border: 0px solid;
-           
-       }
-       th {
+           border: 1px solid;
            text-align: left;
+           padding: 10px;
+           font-size: 18px;
        }
     </style>
 
@@ -42,7 +38,7 @@ Course
             <h2>{{i.c_title}}</h2>
             <div class="course-info">
                 <table>
-                    <tr>    <td>Course Name</td>   <td>{{i.c_name}}</td>   </tr>
+                    <tr>    <td>Course</td>   <td>{{i.c_name}}</td>   </tr>
                     <tr>    <td>Branch</td>   <td>{{i.c_branch}}</td>   </tr>
                     <tr>    <td>Course ID</td>   <td>{{i.c_id}}</td>   </tr>
                     <tr>    <td>Duration</td>   <td>{{i.c_duration}}</td>   </tr>
