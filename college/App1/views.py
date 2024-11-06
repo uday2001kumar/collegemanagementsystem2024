@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
-from .models import SigninModel,Course
+from .models import SigninModel,Course,Faculty
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -68,9 +68,10 @@ class CourseView(View):
         c1=Course.objects.all()
         return render(r,'main/course.html',{'c1':c1})
 
-class Faculty(View):
+class FacultyView(View):
     def get(self,r):
-        return render(r,template_name='main/faculty.html')
+        f1=Faculty.objects.all()
+        return render(r,'main/faculty.html',{'f':f1})
 class About(View):
     def get(self,r):
         return render(r,template_name='main/about.html')

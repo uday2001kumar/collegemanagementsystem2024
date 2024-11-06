@@ -20,23 +20,32 @@ class Course(models.Model):
     def __str__(self):
         return self.c_name
 
+#Faculty Models
+class Faculty(models.Model):
+    fac_id=models.CharField(max_length=1000)
+    fac_name=models.CharField(max_length=100)
+    fac_dep=models.CharField(max_length=100)
+    fac_sub=models.CharField(max_length=100)
+    fac_profile=models.ImageField(upload_to="")
+    fac_exp=models.DecimalField(max_digits=10,decimal_places=2)
+    
+
+
 
 '''______________________________________________________________________________________________________________________'''
 '''______________________________________________________________________________________________________________________'''
 #Student Application
-
-
 class StudentLogin(models.Model):
     s_roll = models.IntegerField(primary_key=True)
     s_dob = models.DateField()
-    def __str__(self):
+    def __int__(self):
         return self.s_roll
-class StudentInformation(StudentLogin):
-    first_name=models.CharField(max_length=50)
-    last_name=models.CharField(max_length=50)
-    age=models.IntegerField()
-    # photo=models.ImageField()
-    course=models.ForeignKey(Course,on_delete=models.CASCADE)
-    state=models.CharField(max_length=100)
-    city=models.CharField(max_length=100)
-    address=models.CharField(max_length=200)
+# class StudentInformation(StudentLogin):
+#     first_name=models.CharField(max_length=50)
+#     last_name=models.CharField(max_length=50)
+#     age=models.IntegerField()
+#     photo=models.ImageField(upload_to="media/")
+#     course=models.ForeignKey(Course,on_delete=models.CASCADE)
+#     state=models.CharField(max_length=100)
+#     city=models.CharField(max_length=100)
+#     address=models.CharField(max_length=200)

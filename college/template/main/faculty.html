@@ -1,7 +1,62 @@
 {% extends 'main/nav.html' %}
+{% load static %}
+
 {% block title %}
-Faculty
+    Faculty
 {% endblock %}
+
 {% block content %}
-    <h1>This is Faculty</h1>
+    <h1>Faculty Members</h1>
+    {% if f %}
+        <div class="faculty-list">
+            {% for faculty in f %}
+                <div class="faculty-member">
+                    <img 
+                        src="{{ faculty.fac_profile.url}}" 
+                        alt="{{ faculty.fac_name }}" 
+                        class="faculty-image">
+                    <div class="faculty-info">
+                        <p><strong>Name:</strong> {{ faculty.fac_name }}</p>
+                        <p><strong>Dept:</strong> {{ faculty.fac_dep }}</p>
+                        <p><strong>Sub:</strong> {{ faculty.fac_sub }}</p>
+                        <p><strong>Experience:</strong> {{ faculty.fac_exp }} years</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No faculty members available.</p>
+    {% endif %}
+{% block styles %}
+    <style>
+        .faculty-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .faculty-member {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .faculty-member:hover {
+            transform: scale(1.05);
+        }
+        .faculty-image {
+            width: 100%;
+            height: auto;
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .faculty-info p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+    </style>
+{% endblock %}
 {% endblock %}

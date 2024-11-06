@@ -6,20 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/student/shome.css' %}"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        nav ul li a.active {
+            background-color: #007bff;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+            nav ul li {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="{% url 'shome' %}">Home</a></li>
-            <li><a href="{% url 'lb' %}">Library</a></li>
-            <li><a href="{% url 'timet' %}">Time Table</a></li>
-            <li><a href="{% url 'er' %}">Exam Result</a></li>
-            <li><a href="{% url 'home' %}">Logout</a></li>
+            <li><a href="{% url 'shome' %}" {% if request.path == '/shome/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{% url 'lb' %}" {% if request.path == '/lb/' %}class="active"{% endif %}>Library</a></li>
+            <li><a href="{% url 'timet' %}" {% if request.path == '/timet/' %}class="active"{% endif %}>Time Table</a></li>
+            <li><a href="{% url 'er' %}" {% if request.path == '/er/' %}class="active"{% endif %}>Exam Result</a></li>
+            <li><a href="{% url 'home' %}" {% if request.path == '/home/' %}class="active"{% endif %}>Logout</a></li>
         </ul>
     </nav>
-{% block content %}
+    {% block content %}
+    {% endblock %}    
 
-{% endblock %}    
     <footer>
         <p>&copy; 2024 Your Project Name</p>
     </footer>
