@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SigninModel,Course,StudentLogin,Faculty
+from .models import SigninModel,Course,StudentLogin,Faculty,Student
 # Register your models here.
 class SigninAdminModel(admin.ModelAdmin):
     list_display=['email','username','pas','cpas']
@@ -17,6 +17,7 @@ class StudentLoginAdmin(admin.ModelAdmin):
     list_display=['s_roll','s_dob']
 admin.site.register(StudentLogin,StudentLoginAdmin)
 
-# class StudentInformationAdmin(admin.ModelAdmin):
-#     list_display=['first_name','last_name','age']
-# admin.site.register(StudentInformation,StudentInformationAdmin)
+class StudentAdmin(admin.ModelAdmin):
+    list_display=['first_name','last_name','age','photo','course','email','mobile',
+    'state','city','address']
+admin.site.register(Student,StudentAdmin)

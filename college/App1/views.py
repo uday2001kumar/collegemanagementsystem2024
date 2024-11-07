@@ -82,7 +82,7 @@ class About(View):
 '''______________________________________________________________________________________________________________________'''
 
 #Student Application
-from .models import StudentLogin
+from .models import StudentLogin,Student
 class StudentLoginView(View):
     def get(self,r):
         return render(r,template_name='student/login.html')
@@ -103,7 +103,8 @@ class StudentLoginV2(View):
 
 class Shome(View):
     def get(self,r):
-        return render(r,template_name='student/shome.html')
+        sm1=Student.objects.all()
+        return render(r,'student/shome.html',{'students':sm1})
 class Timetable(View):
     def get(self,r):
         return render(r,template_name='student/timetable.html')

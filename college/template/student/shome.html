@@ -1,8 +1,27 @@
 {% extends 'student/nhome.html' %}
 {% load static %}
+
 {% block title %}
- Home
+    Home
 {% endblock %}
+
 {% block content %}
-    <h1>Home</h1>
+    <h1>Student List</h1>
+        {% for student in students %}
+        <img src="{{ student.photo.url }}" alt="Photo of {{ student.first_name }} {{ student.last_name }}">
+                <p>FirstName:   {{ student.first_name }}</p>
+                <p>LastName :   {{ student.last_name }}</p>
+                <p>Years    :   {{ student.age }} years</p>
+                <p>Course   :   {{ student.course }}</p>
+                <p>Email    :   {{ student.email }}</p>
+                <p>Mobile   :   {{ student.mobile }}</p>
+                <p>Address  :   {{ student.address }}, {{ student.city }}, {{ student.state }}</p> 
+        {% endfor %}
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+    </style>
 {% endblock %}

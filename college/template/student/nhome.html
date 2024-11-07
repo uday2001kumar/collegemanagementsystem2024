@@ -5,81 +5,121 @@
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/student/shome.css' %}"> <!-- Link to your CSS file -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+}
 
-        nav {
-            background-color: #333;
-            padding: 10px 20px;
-        }
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
 
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
+nav ul li {
+    margin: 0 15px;
+}
 
-        nav ul li {
-            display: inline;
-        }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            display: inline-block;
-            font-size: 1.1rem;
-        }
 
-        nav ul li a:hover {
-            background-color: #555;
-            border-radius: 4px;
-        }
+nav ul li a:hover {
+    background-color: #575757;
+}
 
-        nav ul li a.active {
-            background-color: #007bff;
-        }
+nav ul li a.active {
+    background-color: #4CAF50; 
+    color: white;
+    font-weight: bold;
+}
+/* General Footer Styles */
+footer {
+    background-color: #333; 
+    color: white;           
+    padding: 20px 0;       
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    margin:50% 0px 0px 0px;    
+}
+.footer-container {
+    max-width: 1200px; 
+    margin: 0 auto;    
+    padding: 30px;
+}
+footer .footer-container p {
+    font-size: 30px;
+    margin-bottom: 10px; 
+}
+.footer-links {
+    list-style: none;    
+    padding: 0;              
+    margin: 0; 
+    font-size: 23px;           
+}
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-            nav ul li {
-                text-align: center;
-                width: 100%;
-            }
-        }
+.footer-links li {
+    display: inline-block;   
+    margin-right: 15px;     
+}
+
+.footer-links a {
+    color: #fff;         
+    text-decoration: none;  
+    font-size: 20px;
+}
+
+.footer-links a:hover {
+    color: #ff9800;         
+    text-decoration: underline;
+}
+
+    .footer-links {
+        display: flex;        
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-links li {
+        margin-right: 10px;  
+    }
+
+
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="{% url 'shome' %}" {% if request.path == '/shome/' %}class="active"{% endif %}>Home</a></li>
+            <li><a href="{% url 'shome' %}" class="active"{% endif %}>Home</a></li>
             <li><a href="{% url 'lb' %}" {% if request.path == '/lb/' %}class="active"{% endif %}>Library</a></li>
             <li><a href="{% url 'timet' %}" {% if request.path == '/timet/' %}class="active"{% endif %}>Time Table</a></li>
             <li><a href="{% url 'er' %}" {% if request.path == '/er/' %}class="active"{% endif %}>Exam Result</a></li>
             <li><a href="{% url 'home' %}" {% if request.path == '/home/' %}class="active"{% endif %}>Logout</a></li>
         </ul>
     </nav>
-    {% block content %}
-    {% endblock %}    
 
+    {% block content %}
+    {% endblock %}
     <footer>
-        <p>&copy; 2024 Your Project Name</p>
+        <div class="footer-container">
+            <p>&copy; 2024 Your Institution Name. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Terms of Service</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
     </footer>
 </body>
 </html>

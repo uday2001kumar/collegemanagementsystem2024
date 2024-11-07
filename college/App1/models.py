@@ -9,8 +9,9 @@ class SigninModel(models.Model):
         return self.username
 
 class Course(models.Model):
-    c_title = models.CharField(max_length=100)
+    
     c_id = models.IntegerField(primary_key=True)
+    c_title = models.CharField(max_length=100)
     c_name = models.CharField(unique=True, max_length=50, null=False)
     c_branch = models.CharField(null=False, max_length=50)
     c_duration = models.CharField(max_length=10, null=False)
@@ -40,12 +41,14 @@ class StudentLogin(models.Model):
     s_dob = models.DateField()
     def __int__(self):
         return self.s_roll
-# class StudentInformation(StudentLogin):
-#     first_name=models.CharField(max_length=50)
-#     last_name=models.CharField(max_length=50)
-#     age=models.IntegerField()
-#     photo=models.ImageField(upload_to="media/")
-#     course=models.ForeignKey(Course,on_delete=models.CASCADE)
-#     state=models.CharField(max_length=100)
-#     city=models.CharField(max_length=100)
-#     address=models.CharField(max_length=200)
+class Student(models.Model):
+    first_name=models.CharField(max_length=50,null=False)
+    last_name=models.CharField(max_length=50,null=False)
+    age=models.IntegerField(null=False)
+    photo=models.ImageField(upload_to="media/",null=False)
+    course=models.ForeignKey(Course,on_delete=models.CASCADE)
+    email=models.ForeignKey(SigninModel,on_delete=models.CASCADE)
+    mobile=models.IntegerField(unique=True,null=False)
+    state=models.CharField(max_length=100,null=False)
+    city=models.CharField(max_length=100,null=False)
+    address=models.TextField()
