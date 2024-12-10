@@ -1,7 +1,7 @@
 {% extends 'main/nav.html' %}
 {% load static %}
 {% block title %}
-Course
+Student 
 {% endblock %}
 {% block content %}
 <style>
@@ -77,7 +77,7 @@ button:hover {
         <h2>Student Login</h2>
         <h2 id="msg1" style="font-size: 18px; color: red;text-align: center;">{{msg1}}</h2>
         <h2 id="msg2" style="font-size: 18px; color: red;text-align: center;">{{msg2}}</h2>
-        <form method="post" action="{% url 'slv2' %}">
+        <form action="{% url 'shome' %}">
             {% csrf_token %}
             <div class="form-group">
                 <label for="roll_number">Roll Number:</label>

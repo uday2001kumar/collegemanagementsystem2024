@@ -92,15 +92,12 @@ class StudentLoginV2(View):
         dob=r.POST.get("dob")
         lg1=StudentLogin.objects.filter(s_roll=roll)
         lg2=StudentLogin.objects.filter(s_dob=dob)
-        if not lg1.exists():
-            msg1="Enter Valid Roll Number"
-            return render(r,'student/login.html',{'msg1':msg1})
-        elif not lg2.exists():
-            msg2="Enter Valid Date of Birth"
-            return render(r,'student/login.html',{'msg2':msg2})
-        else:
+        if lg1.exists() and lg2.exists():
             return render(r,'student/nhome.html')
-
+        else:
+            msg1="Enter Valid Values"
+            return render(r,'student/login.html',{'msg1':msg1})
+            
 class Shome(View):
     def get(self,r):
         sm1=Student.objects.all()

@@ -6,106 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <style>
-nav {
-    background-color: #333;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-
-nav ul li a:hover {
-    background-color: #575757;
-}
-
-nav ul li a.active {
-    background-color: #4CAF50; 
-    color: white;
-    font-weight: bold;
-}
-/* General Footer Styles */
-footer {
-    background-color: #333; 
-    color: white;           
-    padding: 20px 0;       
-    font-family: Arial, sans-serif; 
-    text-align: center; 
-    margin:50% 0px 0px 0px;    
-}
-.footer-container {
-    max-width: 1200px; 
-    margin: 0 auto;    
-    padding: 30px;
-}
-footer .footer-container p {
-    font-size: 30px;
-    margin-bottom: 10px; 
-}
-.footer-links {
-    list-style: none;    
-    padding: 0;              
-    margin: 0; 
-    font-size: 23px;           
-}
-
-.footer-links li {
-    display: inline-block;   
-    margin-right: 15px;     
-}
-
-.footer-links a {
-    color: #fff;         
-    text-decoration: none;  
-    font-size: 20px;
-}
-
-.footer-links a:hover {
-    color: #ff9800;         
-    text-decoration: underline;
-}
-
-    .footer-links {
-        display: flex;        
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 10px;
-    }
-
-    .footer-links li {
-        margin-right: 10px;  
-    }
-
-
+        body{
+            margin: 0px;
+            height: 100%;
+        }
+        .upperblock{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(233, 52, 163);
+            text-align: center;
+            font-size: 40px;
+        }
+        nav ul{
+            display: flex;
+            justify-content: center;
+            justify-content: space-evenly;
+            margin: 0px; 
+            background-color:rgba(0, 0, 0, 0.404);
+            padding: 20px;
+            border-radius: 7px;
+        }
+        nav ul li{
+            list-style-type:none;
+        }
+        nav ul li a{
+            text-decoration: none;
+            /* background-color:rgba(255, 255, 255, 0.37); */
+            font-weight: bolder;
+            padding:10px 30px 10px 30px;
+            font-size: 20px;
+        }
+        nav ul li a:hover{
+            background-color:white;
+            border-radius: 10px;
+            
+        }
+        img{
+            width: 170px;
+            height: 170px;
+            border-radius: 6px;
+        }
+        footer{
+            position: relative;
+            bottom: 0px;
+            width: 100%;
+        }
+        .footer-container{
+            background-color: rgba(10, 2, 2, 0.795);
+            border: 2px solid;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 20px;
+            color: white;
+        }
+        .footer-container a{
+            text-decoration: none;
+            color: yellow;
+        }
+        
     </style>
 </head>
 <body>
+<div class="main-block">
+    <div class="upperblock">
+        <img src="{% static 'images/slogo2.jpg' %}" alt="student_icon">
+        <h2 style="color: white;">Welcome to Student  App</h2>
+        <img src="{% static 'images/slogo3.jpg' %}" alt="student_icon2">
+    </div>
     <nav>
         <ul>
-            <li><a href="{% url 'shome' %}" class="active"{% endif %}>Home</a></li>
-            <li><a href="{% url 'lb' %}" {% if request.path == '/lb/' %}class="active"{% endif %}>Library</a></li>
-            <li><a href="{% url 'timet' %}" {% if request.path == '/timet/' %}class="active"{% endif %}>Time Table</a></li>
-            <li><a href="{% url 'er' %}" {% if request.path == '/er/' %}class="active"{% endif %}>Exam Result</a></li>
-            <li><a href="{% url 'home' %}" {% if request.path == '/home/' %}class="active"{% endif %}>Logout</a></li>
+            <li><a href="{% url 'shome' %}">Home</a></li>
+            <li><a href="{% url 'lb' %}">Library</a></li>
+            <li><a href="{% url 'timet' %}">Time Table</a></li>
+            <li><a href="{% url 'er' %}">Exam Result</a></li>
+            <li><a href="{% url 'home' %}">Logout</a></li>
         </ul>
     </nav>
 
@@ -114,12 +90,11 @@ footer .footer-container p {
     <footer>
         <div class="footer-container">
             <p>&copy; 2024 Your Institution Name. All rights reserved.</p>
-            <ul class="footer-links">
-                <li><a href="">Privacy Policy</a></li>
-                <li><a href="">Terms of Service</a></li>
-                <li><a href="">Contact Us</a></li>
-            </ul>
+              <a href="">Privacy Policy</a>
+              <a href="">Terms of Service</a>
+              <a href="">Contact Us</a>
         </div>
+    </div>
     </footer>
 </body>
 </html>

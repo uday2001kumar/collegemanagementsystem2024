@@ -6,7 +6,7 @@ class SigninModel(models.Model):
     pas = models.CharField(max_length=10)
     cpas = models.CharField(max_length=10)
     def __str__(self):
-        return self.username
+        return self.email
 
 class Course(models.Model):
     
@@ -36,19 +36,25 @@ class Faculty(models.Model):
 '''______________________________________________________________________________________________________________________'''
 '''______________________________________________________________________________________________________________________'''
 #Student Application
-class StudentLogin(models.Model):
-    s_roll = models.IntegerField(primary_key=True)
-    s_dob = models.DateField()
-    def __int__(self):
-        return self.s_roll
+from datetime import datetime
+
 class Student(models.Model):
+    s_roll = models.IntegerField(primary_key=True)
     first_name=models.CharField(max_length=50,null=False)
     last_name=models.CharField(max_length=50,null=False)
-    age=models.IntegerField(null=False)
     photo=models.ImageField(upload_to="media/",null=False)
     course=models.ForeignKey(Course,on_delete=models.CASCADE)
-    email=models.ForeignKey(SigninModel,on_delete=models.CASCADE)
+    year=models.IntegerField(null=False,default=0)
+    email = models.OneToOneField(SigninModel, on_delete=models.CASCADE)
     mobile=models.IntegerField(unique=True,null=False)
     state=models.CharField(max_length=100,null=False)
     city=models.CharField(max_length=100,null=False)
     address=models.TextField()
+    def __str__(self):
+        return self.s_roll
+class StudentLogin(models.Model):
+    s_roll=models.OneToOneField(Student, on_delete=models.CASCADE)
+    s_dob = models.DateField()
+    def __int__(self):
+        return self.s_roll
+    

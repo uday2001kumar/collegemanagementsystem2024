@@ -18,6 +18,6 @@ class StudentLoginAdmin(admin.ModelAdmin):
 admin.site.register(StudentLogin,StudentLoginAdmin)
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display=['first_name','last_name','age','photo','course','email','mobile',
+    list_display=['s_roll','first_name','last_name','year','photo','course','email','mobile',
     'state','city','address']
 admin.site.register(Student,StudentAdmin)
